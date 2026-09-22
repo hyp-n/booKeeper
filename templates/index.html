@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="paper">
   <head>
     <title>booKeeper - V01</title>
     <meta charset="UTF-8" />
@@ -9,8 +9,17 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!--Daisy Themes-->
-    
+    <!--Daisy Themes--> 
+   <style>
+  [data-theme="paper"] {
+    --base-100: #FFF2E1;
+    --base-content: #4A2C1A;
+  }
+  [data-theme="paperDark"] {
+    --base-100: #4A2C1A;
+    --base-content: #FFE2E1;
+  }
+</style>
   </head>
   <body>
     <main>
@@ -23,7 +32,7 @@
         </div>
       </nav>
 
-      <h1 class="class=text-3xl font-bold text-center">Welcome to booKeeper, {{username}}</h1>
+      <h1 class="text-3xl font-bold text-center">Welcome to booKeeper, {{username}}</h1>
     </main>
   </body>
 </html>
