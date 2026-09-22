@@ -1,38 +1,51 @@
 <!doctype html>
-<html lang="en" data-theme="paper">
+<html lang="en" data-theme="retro">
   <head>
     <title>booKeeper - V01</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- CDNS :- Tailwind Css Paired with daisy (just because it is easier and pico looks like slop fr)-->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!--Daisy Themes--> 
-   <style>
-  [data-theme="paper"] {
-    --base-100: #FFF2E1;
-    --base-content: #4A2C1A;
-  }
-  [data-theme="paperDark"] {
-    --base-100: #4A2C1A;
-    --base-content: #FFE2E1;
-  }
-</style>
+    <!-- Daisy Themes-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body>
     <main>
       <nav class="navbar bg-base-100 shadow-sm justify-center">
         <div>
           <!-- Main div for navbar -->
-          <a class="btn btn-ghost rounded-full text-xl" href="{{ url_for('index') }}">Home</a>
-          <a class="btn btn-ghost rounded-full text-xl" href="{{ url_for('collection') }}">Collection</a>
-          <a class="btn btn-ghost rounded-full text-xl" href="{{ url_for('pgcount') }}">Page Count</a>
+          <a
+            class="btn btn-ghost rounded-full text-xl"
+            href="{{ url_for('index') }}"
+            >Home</a
+          >
+          <a
+            class="btn btn-ghost rounded-full text-xl"
+            href="{{ url_for('collection') }}"
+            >Collection</a
+          >
+          <a
+            class="btn btn-ghost rounded-full text-xl"
+            href="{{ url_for('pgcount') }}"
+            >Page Count</a
+          >
         </div>
       </nav>
 
-      <h1 class="text-3xl font-bold text-center">Welcome to booKeeper, {{username}}</h1>
+      <h1 class="text-3xl font-bold text-center">
+        Welcome to booKeeper, {{username}}
+      </h1>
     </main>
   </body>
 </html>
