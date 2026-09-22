@@ -1,12 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collections Page</title>
-</head>
-<body>
-    <!-- TODO: use sqlite to maintian a db -->
-     <h1> Page COunter and Stat Page!</h1>
-</body>
+<!doctype html>
+<!-- page count.html!-->
+<html lang="en" data-theme="retro">
+  <head>
+    <title>booKeeper - Collections</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--FOntsies-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <!-- tailwind and css stuff -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body class="min-h-screen bg-base-200 flex flex-col">
+    <!-- Navigation Bar -->
+    <nav class="navbar bg-base-100 shadow-sm justify-center mb-6">
+      <div>
+        <a
+          class="btn btn-ghost rounded-full text-xl"
+          href="{{ url_for('index') }}"
+          >Home</a
+        >
+        <a
+          class="btn btn-ghost rounded-full text-xl"
+          href="{{ url_for('collection') }}"
+          >Collection</a
+        >
+        <a
+          class="btn btn-ghost rounded-full text-xl"
+          href="{{ url_for('pgcount') }}"
+          >Page Count</a
+        >
+      </div>
+    </nav>
+
+    <!-- Main Dtuff -->
+    <main class="container mx-auto   flex-grow max-w-4xl"></main>
+  </body>
 </html>
+
+

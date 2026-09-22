@@ -1,5 +1,8 @@
 from flask import Flask, render_template, redirect, url_for
 from markupsafe import escape
+import json
+from urllib import request
+from isbn_fetcher import *
 
 app=Flask(__name__)
 
@@ -11,7 +14,7 @@ def index():
     return render_template("index.html", username=username)
 
 #Book Collection Page
-@app.route('/col')
+@app.route('/collections')
 def collection():
     return render_template("collections.html")
 
@@ -22,6 +25,7 @@ def pgcount():
 
 #TODO:Integrate Login and Usernames
 
+#--- Uh Library ISBN Stuff ---#
 
 
 #Runs the server without using the full command, running this file is enough
