@@ -7,7 +7,7 @@ app=Flask(__name__)
 @app.route('/')
 def index():
     #TODO:Make the username render here frfr
-    username = "Siddharth"
+    username = "hyp-en"
     return render_template("index.html", username=username)
 
 #Book Collection Page
