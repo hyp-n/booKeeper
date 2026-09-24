@@ -11,7 +11,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/main.css') }}"
     />
-    <!-- tailwind and css stuff -->
+    <!-- tailwind, htmX and css stuff -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -23,6 +23,7 @@
       rel="stylesheet"
       type="text/css"
     />
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   </head>
   <body class="min-h-screen bg-base-200 flex flex-col">
     <!-- Navigation Bar -->
@@ -64,7 +65,40 @@
             />
           </form>
         </div>
-     </div>
+      </div>
     </main>
+    <!-- Folder, And Book Parsing-->
+    <section
+      class="folder-section"
+      ondragover="event.preventDefault"
+      hx-post="/api/move-book"
+      hx-trigger="drop"
+      hx-target="lib-con"
+      hx-swap="outerHTML"
+      hxvals="js:{
+      book_id:event.dataTransfer.getdata('text/plain')
+      collection:{{foldername}}
+      }"
+    >
+      <h2>{{foldername}} || {{books|length}}</h2>
+      <div class="book-grid">
+      {{for book in books}} <!-- python shit dw-->
+      <div
+        class="book-card"
+        draggable="true"
+        ondragstart="event.dataTransfer.setData('text/plain', '{{ book._id }}')"
+      >
+        <a
+          href="https://libgen.is/search.php?req={{ book.isbn }}"
+          target="_blank"
+        >
+          <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
+        </a>
+        <h4>{{ book.title }}</h4>
+        {{%endfor}} <!-- Whew. This should probably work, if this dosent, im gonna shit my pants frfr-->
+      </div>
+      </div>
+    </section>
+    <!-- this shit was so *beeeeep* hard -->
   </body>
 </html>

@@ -1,20 +1,22 @@
 import json
-from urllib import request
+import urllib.request
 import pymongo
 import os
 from dotenv import load_dotenv
+from bson.objectid import ObjectId
+from flask import render_template, request
 
 load_dotenv()
 
 def isbn_fetcher(isbn):
     apiurl = f"https://openlibrary.org/isbn/{isbn}.json"
 
-    req = request.Request(
+    req = urllib.request.Request(
         apiurl, 
         headers={'User-Agent': 'booKeeperApp/0.1 (educational project)'}
     )
     try:
-        with request.urlopen(req) as response:
+        with url    lib.request.urlopen(req) as response:
             book_meta = json.loads(response.read().decode('utf-8'))
 
         if book_meta:
@@ -63,6 +65,26 @@ def save_book_data(isbn):
     return False
 
   #TODO: Add zlib/AA connection
+@app.route('/api/move-book', methods=['POST'])
+def move_book():
+  book_id = request.form.get('book_id') or request.json.get('book_id')
+  new_collection = request.form.get('collection') or request.json.get(
+      'collection'
+  )
 
+
+  books_col.update_one(
+      {'_id': ObjectId(book_id)}, {'$set': {'collection': new_collection}}
+  )
+
+  # uhm this fetches tha books from mongo
+  all_books = list(books_col.find())
+  collections = {}
+  for book in all_books:
+    folder = book.get('collection', 'UNCOLLECTED')
+    collections.setdefault(folder, []).append(book)
+
+  # Return just the inner library container for HTMX to swap
+  return render_template('partials/library_grid.html', collections=collections)
 
 
