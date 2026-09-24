@@ -1,10 +1,15 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request as flask_request
 from markupsafe import escape
 import json
-from urllib import request
 from xtramodules import *
+import urllib.request
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app=Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
 
 #Index Page
 @app.route('/')
@@ -16,7 +21,7 @@ def index():
 #lowk i made this to test stuff out , and I will NEVER remove stuff i tested unless explicitly mentioned so enjou
 @app.route('/scrathpad')
 def scratchpad():
-    return render_template("collections.html")
+    return render_template("scratchpad.html")
 
 #Book Collection Page
 @app.route('/collections')
@@ -31,8 +36,14 @@ def pgcount():
 #TODO:Integrate Login and Usernames
 
 #--- Uh Library ISBN Stuff ---#
+@app.route("/add-book", methods=["POST"])
+def add_book_handler():
+    isbn = flask_request.form.get("isbn")
 
+    if isbn:
+        save_book_data(isbn)
 
+    return redirect(url_for('collection'))
 #SQL stuff
 
 #Runs the server without using the full command, running this file is enough

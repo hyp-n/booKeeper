@@ -1,5 +1,10 @@
 import json
 from urllib import request
+import pymongo
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def isbn_fetcher(isbn):
     apiurl = f"https://openlibrary.org/isbn/{isbn}.json"
@@ -19,7 +24,7 @@ def isbn_fetcher(isbn):
 
             if authors:
                 for author in authors:
-                    name = author.get('name')
+                    name = author.get('key')
                     if name:
                         author_names.append(name)
                     else:
@@ -37,13 +42,27 @@ def isbn_fetcher(isbn):
                 'cover': cover_url
             }
 
+            
+
         else:
             return 'No Book Found!'
-            
+        
+
     except Exception as e:
         print(f"Oops! Something went wrong! Error: {e}")
         return 'No Book Found!'
 
-if __name__ == "__main__":
-    result = isbn_fetcher("9780143127741")
-    print(result)
+def save_book_data(isbn):
+    book_data = isbn_fetcher(isbn)
+    if isinstance(book_data, dict):
+        myclient = pymongo.MongoClient(os.getenv("MONGO_URI"))
+        mydb = myclient["mydatabase"] 
+        total_books = mydb["all_books"]   
+        total_books.insert_one(book_data)
+        return True
+    return False
+
+  #TODO: Add zlib/AA connection
+
+
+
