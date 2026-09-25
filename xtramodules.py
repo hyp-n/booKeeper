@@ -62,29 +62,10 @@ def save_book_data(isbn):
         total_books = mydb["all_books"]   
         total_books.insert_one(book_data)
         return True
+
     return False
 
   #TODO: Add zlib/AA connection
-@app.route('/api/move-book', methods=['POST'])
-def move_book():
-  book_id = request.form.get('book_id') or request.json.get('book_id')
-  new_collection = request.form.get('collection') or request.json.get(
-      'collection'
-  )
 
-
-  books_col.update_one(
-      {'_id': ObjectId(book_id)}, {'$set': {'collection': new_collection}}
-  )
-
-  # uhm this fetches tha books from mongo
-  all_books = list(books_col.find())
-  collections = {}
-  for book in all_books:
-    folder = book.get('collection', 'UNCOLLECTED')
-    collections.setdefault(folder, []).append(book)
-
-  # Return just the inner library container for HTMX to swap
-  return render_template('partials/library_grid.html', collections=collections)
 
 

@@ -78,7 +78,7 @@
       hx-swap="outerHTML"
       hx-vals="js:{
       book_id:event.dataTransfer.getData('text/plain'),
-      collection:{{foldername || tojson}}
+      collection:{{foldername | tojson}}
       }"
     >
       <h2>{{foldername}} || {{books|length}}</h2>
@@ -94,7 +94,7 @@
             href="https://libgen.is/search.php?req={{ book.isbn }}"
             target="_blank"
           >
-            <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
+            <img src="{{ book.cover }}" alt="{{ book.title }}" />
           </a>
           <h4>{{ book.title }}</h4>
         </div>
