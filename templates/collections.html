@@ -69,34 +69,37 @@
     </main>
     <!-- Folder, And Book Parsing-->
     <section
+      id="lib-con"
       class="folder-section"
-      ondragover="event.preventDefault"
+      ondragover="event.preventDefault()"
       hx-post="/api/move-book"
       hx-trigger="drop"
-      hx-target="lib-con"
+      hx-target="#lib-con"
       hx-swap="outerHTML"
-      hxvals="js:{
-      book_id:event.dataTransfer.getdata('text/plain')
-      collection:{{foldername}}
+      hx-vals="js:{
+      book_id:event.dataTransfer.getData('text/plain'),
+      collection:{{foldername || tojson}}
       }"
     >
       <h2>{{foldername}} || {{books|length}}</h2>
       <div class="book-grid">
-      {{for book in books}} <!-- python shit dw-->
-      <div
-        class="book-card"
-        draggable="true"
-        ondragstart="event.dataTransfer.setData('text/plain', '{{ book._id }}')"
-      >
-        <a
-          href="https://libgen.is/search.php?req={{ book.isbn }}"
-          target="_blank"
+        {%for book in books%}
+        <!-- python shit dw-->
+        <div
+          class="book-card"
+          draggable="true"
+          ondragstart="event.dataTransfer.setData('text/plain', '{{ book._id }}')"
         >
-          <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
-        </a>
-        <h4>{{ book.title }}</h4>
-        {{%endfor}} <!-- Whew. This should probably work, if this dosent, im gonna shit my pants frfr-->
-      </div>
+          <a
+            href="https://libgen.is/search.php?req={{ book.isbn }}"
+            target="_blank"
+          >
+            <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
+          </a>
+          <h4>{{ book.title }}</h4>
+        </div>
+        {%endfor}
+        <!-- Whew. This should probably work, if this dosent, im gonna shit my pants frfr-->
       </div>
     </section>
     <!-- this shit was so *beeeeep* hard -->
