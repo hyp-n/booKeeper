@@ -1,4 +1,9 @@
 # Hi guys! I am hyp-n, maker of my currently prized obsession, **booKeeper**!
 
 ## CURRENT FEATURES:
-lowk didnt make this yet frfr 😭😭🥀🥀
+- ISBN Lookup
+- Display books??
+- Handle duplicates
+
+## Known Problems:
+- bottlenecked due to open library, tho i found a different url and will update shortly...
