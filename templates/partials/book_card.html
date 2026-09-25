@@ -1,0 +1,17 @@
+<div
+  class="book-card"
+  draggable="true"
+  ondragstart="event.dataTransfer.setData('text/plain', '{{ book._id }}')"
+>
+  {% if book.cover %}
+    <img src="{{ book.cover }}" alt="{{ book.title }}">
+  {% endif %}
+
+  <h4>{{ book.title }}</h4>
+
+  {% if book.authors %}
+    <p>{{ book.authors|join(', ') }}</p>
+  {% endif %}
+</div>
+
+<!-- temporarily experimenting with a slop factory :( dw i am only doing this for now... I have ALOT of stuff, so sorry y'all!-->

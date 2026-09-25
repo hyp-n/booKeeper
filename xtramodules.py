@@ -62,8 +62,21 @@ def save_book_data(isbn):
         total_books = mydb["all_books"]   
         total_books.insert_one(book_data)
         return True
-
     return False
+
+def get_books_collection():
+    client = pymongo.MongoClient(os.getenv("MONGO_URI"))
+    return client["mydatabase"]["all_books"]
+
+def get_collections():
+    books_col = get_books_collection()
+    collections = {}
+
+    for i in books_col.find().sort("title", 1):  
+        folder = i.get("collection") or "UNCOLLECTED"  
+        collections.setdefault(folder, []).append(book)
+ 
+    return collections
 
   #TODO: Add zlib/AA connection
 
