@@ -16,7 +16,7 @@ def isbn_fetcher(isbn):
         headers={'User-Agent': 'booKeeperApp/0.1 (educational project)'}
     )
     try:
-        with url    lib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req) as response:
             book_meta = json.loads(response.read().decode('utf-8'))
 
         if book_meta:
