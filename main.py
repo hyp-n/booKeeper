@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request as flask_request
 from markupsafe import escape
 import json
-from xtramodules import isbn_fetcher, save_book_data
+from xtramodules import isbn_fetcher, save_book_data, get_collections
 import urllib.request
 import os
 from dotenv import load_dotenv
@@ -30,7 +30,8 @@ def scratchpad():
 #Book Collection Page
 @app.route('/collections')
 def collection():
-    return render_template("collections.html")
+    collections = get_collections()
+    return render_template("collections.html", collections= collections)
 
 #Page count page
 @app.route('/pgcount')

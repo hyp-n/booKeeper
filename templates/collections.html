@@ -1,7 +1,6 @@
 <!doctype html>
 <!-- collections html bro-->
 <html lang="en" data-theme="retro">
-  <!--TODO: Use an SQLite DB-->
   <head>
     <title>booKeeper - Collections</title>
     <meta charset="UTF-8" />
@@ -76,10 +75,6 @@
       hx-trigger="drop"
       hx-target="#lib-con"
       hx-swap="outerHTML"
-      hx-vals="js:{
-      book_id:event.dataTransfer.getData('text/plain'),
-      collection:{{foldername | tojson}}
-      }"
     >
       <h2>{{foldername}} || {{books|length}}</h2>
       <div class="book-grid">

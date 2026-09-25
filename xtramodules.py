@@ -41,7 +41,8 @@ def isbn_fetcher(isbn):
             return {
                 'title': title,
                 'authors': author_names,
-                'cover': cover_url
+                'cover': cover_url,
+                'isbn': isbn.strip('-')
             }
 
             
