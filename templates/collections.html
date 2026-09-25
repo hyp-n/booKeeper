@@ -76,10 +76,10 @@
       hx-target="#lib-con"
       hx-swap="outerHTML"
     >
-      <h2>{{foldername}} || {{books|length}}</h2>
+
       <div class="book-grid">
-        {%for book in books%}
-        <!-- python shit dw-->
+        {% for folder_name, books in collections.items() %}
+        <!-- holy brainfuck-->
         <div
           class="book-card"
           draggable="true"
@@ -93,7 +93,7 @@
           </a>
           <h4>{{ book.title }}</h4>
         </div>
-        {%endfor}
+        {%endfor%}
         <!-- Whew. This should probably work, if this dosent, im gonna shit my pants frfr-->
       </div>
     </section>
