@@ -50,10 +50,7 @@ def add_book_handler():
   return redirect(url_for("collection"))
 
 #book moving
-@app.route("/api/movebook", method="POST")
-def book_move():
-   
-   return pass
+#TODO: lowk do this frfr
 
 #TODO:Integrate Login and Usernames
 

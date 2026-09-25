@@ -74,11 +74,11 @@ def get_collections():
 
     for i in books_col.find().sort("title", 1):  
         folder = i.get("collection") or "UNCOLLECTED"  
-        collections.setdefault(folder, []).append(book)
+        collections.setdefault(folder, []).append(i)
  
     return collections
 
-  #TODO: Add zlib/AA connection
+# Added libgen to collections.html instead of the other sources lmao
 
 
 
