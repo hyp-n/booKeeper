@@ -1,0 +1,64 @@
+<!doctype html>
+<!--
+  Hey random doods and ais. :p
+  Yes, you >:(.
+  Before touching this file, go learn Jinja template inheritance.
+  I know you want to just fix something wrong.
+  Don't. ^_~
+- "very goot poem" - 8)  [for the people who dont understand thats an emoticon]
+-->
+<!-- Hi! This is the shared layout of all the main pages.... If you edit here, you edit everywhere-->
+ <!-- Hey! Before editing, it would be easier if you learnt some daisyUI5, tailwindcss, and maybe HTMX
+  also, if you reallyyy want, you can give this to an ai, altho thats an insult to me-->
+<html lang="en" data-theme="retro">
+  <head>
+    <title>booKeeper - Collections</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--FOntsies-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <!-- tailwind, htmX and css stuff -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body class="min-h-screen bg-base-200 flex flex-col">
+    <!-- Navigation Bar -->
+    <nav class="navbar bg-base-100 shadow-sm justify-center mb-6">
+      <div>
+        <a
+          class="btn btn-ghost rounded-full text-xl"
+          href="{{ url_for('pages.index') }}"
+          >Home</a
+        > <!-- Home Button in Navigation Bar-->
+        <a
+          class="btn btn-ghost rounded-full text-xl"
+          href="{{ url_for('collections.collection') }}"
+          >Collection</a
+        > <!-- Collection Button in Navigation Bar-->
+        <a
+          class="btn btn-ghost rounded-full text-xl"
+          href="{{ url_for('pages.pgcount') }}"
+          >Page Count</a
+        > <!-- Page Counter Button in Navigation Bar-->
+      </div>
+    </nav>
+
+    <!-- PAGE SPECIFIC STUFF :-] GO TO THE SPECIFIC PAGES TO EDIT THAT EDITING THIS IS USELESS-->
+     {% block content %}
+
+     {% endblock %}
+  </body>
+</html>
