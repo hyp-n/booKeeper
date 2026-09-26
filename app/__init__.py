@@ -8,8 +8,7 @@ from app.routes.pages import pages_bp
 def create_app():
     load_dotenv()
     app=Flask(__name__)
-    app.secret_key = os.getenv("SECRET_KEY")
-
+    
     app.register_blueprint(books_bp)
     app.register_blueprint(collections_bp)
     app.register_blueprint(pages_bp)
