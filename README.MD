@@ -20,5 +20,5 @@
 
 
 ## TODO:
-- [] Make an update script
-- [] implement page counting and folder based management
+- [ ] Make an update script
+- [ ] implement page counting and folder based management
