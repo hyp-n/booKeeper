@@ -13,4 +13,4 @@ def add_book_handler():
     if flask_request.headers.get("HX-Request"):
       return render_template("partials/book_card.html", book=new_book)
 
-  return redirect(url_for("collection"))
+  return redirect(url_for("collections.collection"))
