@@ -1,7 +1,7 @@
 @echo off
 setlocal  
 
-cd /d "@%~dp0"
+cd /d "%~dp0"
 
 echo.
 echo ====== Updating booKeeper ======
@@ -16,6 +16,7 @@ if errorlevel 1 (
     echo Encountered an error with git....
     echo Pls check the above error 
     echo.
+    exit /b 1
 )
 
 echo Step 2/2
@@ -25,6 +26,7 @@ echo Updating dependencies
 if errorlevel 1 (
     echo There was an error installing dependencies
     echo please check the pip errors above!
+    exit /b 1
 )
 
 echo ======update finished :) =======
